@@ -2,6 +2,7 @@
 import { Search, CircleUser, Menu } from "lucide-vue-next";
 
 const config = useRuntimeConfig();
+const useMenu = useMenuStore();
 </script>
 
 <template>
@@ -15,7 +16,7 @@ const config = useRuntimeConfig();
 			</SheetTrigger>
 			<SheetContent side="left" class="flex flex-col">
 				<a href="/" class="font-bold">
-					<Package2 class="h-6 w-6" />
+					<!-- <Package2 class="h-6 w-6" /> -->
 					<span class="">{{ config.public.appName }}</span>
 				</a>
 				<DashboardSidebarMenu />

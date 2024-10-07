@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
-
 const props = defineProps({
 	item: {
 		type: Object,
 		required: true,
 	},
 });
+
+const useMenu = useMenuStore();
 </script>
 
 <template>

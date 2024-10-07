@@ -5,21 +5,15 @@ import { LogOut, UserRound } from "lucide-vue-next";
 </script>
 
 <template>
-	<Card>
-		<CardHeader>
-			<!-- <CardTitle>Upgrade to Pro</CardTitle> -->
-			<CardDescription>
-				<Button variant="outline" size="sm" class="w-full text-left text-primary flex justify-start">
-					<UserRound class="w-4 h-4 mr-4" />
-					<span>Мой аккаунт</span>
-				</Button>
-			</CardDescription>
-		</CardHeader>
-		<CardContent>
-			<Button variant="outline" size="sm" class="w-full text-left text-primary flex justify-start">
-				<LogOut class="w-4 h-4 mr-4" />
-				<span>Выйти</span>
-			</Button>
-		</CardContent>
-	</Card>
+	<Button variant="outline" size="sm" class="w-full text-left text-primary flex justify-start">
+		<UserRound class="w-4 h-4 mr-4" />
+		<span>Мой аккаунт</span>
+	</Button>
+	<div class="flex gap-4 md:mt-4">
+		<Button variant="outline" size="sm" class="w-full text-left text-primary flex justify-start">
+			<LogOut class="w-4 h-4 mr-4" />
+			<span>Выйти</span>
+		</Button>
+		<ColorModeSelector />
+	</div>
 </template>

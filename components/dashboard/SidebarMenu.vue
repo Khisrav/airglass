@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import type menuProps from "~/utils/menuUtils";
+import { useMenuStore } from "~/stores/menuStore";
 
-const props = defineProps<menuProps>();
-console.log(props);
+const useMenu = useMenuStore();
 </script>
 
 <template>
-	<nav class="grid items-start text-sm font-medium lg:px-4">
-		<DashboardSidebarNavigationItem v-for="(item, index) in props.menuItems" :key="index" :item="item" />
+	<nav class="grid items-start text-normal font-medium lg:px-4">
+		<DashboardSidebarNavigationItem v-for="(item, index) in useMenu.menuItems" :key="index" :item="item" />
 	</nav>
 </template>

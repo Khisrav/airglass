@@ -1,4 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useSeoMeta({
+	title: "Вход",
+	ogTitle: "Вход",
+	description: "Вход",
+	ogDescription: "Вход",
+	ogUrl: "https://airglass.dev/auth",
+	ogType: "website",
+	ogImage: "https://airglass.dev/logo.png",
+});
+</script>
 <template>
 	<div class="grid sm:grid-cols-2 grid-cols-1 content-stretch sm:h-screen">
 		<div class="bg-foreground text-background p-4 flex items-center justify-center">
