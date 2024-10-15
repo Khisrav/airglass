@@ -1,14 +1,15 @@
+// stores/useMenuStore.ts
 import { defineStore } from 'pinia'
-import { Home, Users, Boxes, FileBox } from "lucide-vue-next";
 import type MenuItem from '~/utils/menuUtils';
 
 export const useMenuStore = defineStore('menu', {
     state: () => ({
         menuItems: [
-            { icon: Home, label: "Главная", to: "/dashboard", isActive: false },
-            { icon: Users, label: "Пользователи", to: "/dashboard/users", isActive: false },
-            { icon: Boxes, label: "Каталог", to: "/dashboard/catalog", isActive: false },
-            { icon: FileBox, label: "Шаблоны", to: "/dashboard/templates", isActive: false },
+            { icon: 'Home', label: "Главная", to: "/dashboard", isActive: false },
+            { icon: 'Calculator', label: "Калькулятор", to: "/dashboard/calculator", isActive: false },
+            { icon: 'Users', label: "Пользователи", to: "/dashboard/users", isActive: false },
+            { icon: 'Boxes', label: "Каталог", to: "/dashboard/catalog", isActive: false },
+            { icon: 'FileBox', label: "Шаблоны", to: "/dashboard/templates", isActive: false },
         ] as MenuItem[]
     }),
     actions: {

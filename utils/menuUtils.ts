@@ -1,8 +1,8 @@
 import { Home, Users, Boxes, FileBox } from "lucide-vue-next";
-type IconComponent = typeof Home | typeof Users | typeof Boxes | typeof FileBox;
+export type IconComponent = typeof Home | typeof Users | typeof Boxes | typeof FileBox;
 
 export default interface MenuItem {
-	icon: IconComponent;
+	icon: string;
 	label: string;
 	to: string;
 	badge?: number;

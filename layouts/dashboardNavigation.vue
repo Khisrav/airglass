@@ -1,8 +1,19 @@
 <script setup lang="ts">
 const config = useRuntimeConfig();
-
 const useMenu = useMenuStore();
-console.log(useMenu);
+
+// useHead({
+// 	link: [
+// 		{
+// 			rel: "stylesheet",
+// 			href: "https://unpkg.com/ag-grid-community/styles/ag-grid.css",
+// 		},
+// 		{
+// 			rel: "stylesheet",
+// 			href: "https://unpkg.com/ag-grid-community/styles/ag-theme-alpine.css",
+// 		},
+// 	],
+// });
 </script>
 
 <template>
@@ -26,10 +37,7 @@ console.log(useMenu);
 			<!-- <main class="p-4 lg:p-6">
 				<slot />
 			</main> -->
-			<main class="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-				<div class="flex items-center">
-					<h1 class="text-lg font-semibold md:text-2xl">{{ useMenu.activePageLabel() }}</h1>
-				</div>
+			<main class="flex flex-1 flex-col">
 				<slot />
 				<!-- <DashboardEmptyState /> -->
 			</main>

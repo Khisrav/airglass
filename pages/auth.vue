@@ -11,7 +11,7 @@ useSeoMeta({
 </script>
 <template>
 	<div class="grid sm:grid-cols-2 grid-cols-1 content-stretch sm:h-screen">
-		<div class="bg-foreground text-background p-4 flex items-center justify-center">
+		<div class="bg-black text-background p-4 flex items-center justify-center">
 			<div>
 				<h1 class="text-4xl font-bold mb-4">AirGlass</h1>
 				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>

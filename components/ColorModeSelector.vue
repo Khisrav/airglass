@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Moon, Sun } from "lucide-vue-next";
+import { Computer, ComputerIcon, Moon, Sun } from "lucide-vue-next";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
@@ -17,9 +17,9 @@ console.log(colorMode.preference);
 			</Button>
 		</DropdownMenuTrigger>
 		<DropdownMenuContent align="end">
-			<DropdownMenuItem @click="colorMode.preference = 'light'"> Светлая </DropdownMenuItem>
-			<DropdownMenuItem @click="colorMode.preference = 'dark'"> Темная </DropdownMenuItem>
-			<DropdownMenuItem @click="colorMode.preference = 'system'"> Системная </DropdownMenuItem>
+			<DropdownMenuItem @click="colorMode.preference = 'light'"> <Sun class="h-4 w-4 rotate-90 transition-all dark:rotate-0 mr-2" />Светлая </DropdownMenuItem>
+			<DropdownMenuItem @click="colorMode.preference = 'dark'"> <Moon class="h-4 w-4 rotate-0 transition-all dark:-rotate-90 mr-2" />Темная </DropdownMenuItem>
+			<DropdownMenuItem @click="colorMode.preference = 'system'"> <ComputerIcon class="h-4 w-4 transition-all mr-2" /> Системная </DropdownMenuItem>
 		</DropdownMenuContent>
 	</DropdownMenu>
 </template>
