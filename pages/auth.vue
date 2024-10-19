@@ -8,6 +8,7 @@ useSeoMeta({
 	ogType: "website",
 	ogImage: "https://airglass.dev/logo.png",
 });
+// const config = useRuntimeConfig();
 </script>
 <template>
 	<div class="grid sm:grid-cols-2 grid-cols-1 content-stretch sm:h-screen">
@@ -24,7 +25,8 @@ useSeoMeta({
 					<CardDescription>Выберите сервис для авторизации на сайт</CardDescription>
 				</CardHeader>
 				<CardContent>
-					<NuxtLink to="https://google.com">
+					<NuxtLink :to="'http://127.0.0.1:8000/login/google'">
+						<!-- <NuxtLink :to="'http://192.168.164.70:8000/login/google'"> -->
 						<Button class="w-full" :variant="'outline'">
 							<NuxtImg src="icons/google.svg" class="w-5 mr-4" />
 							<span>Войти через Google</span>

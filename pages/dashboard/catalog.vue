@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col h-full">
+	<div class="flex flex-col h-full p-4">
 		<div class="flex items-stretch justify-stretch h-full">
 			<AgGridVue
 				class="w-full h-full"
@@ -23,7 +23,8 @@
 <script setup>
 import { AgGridVue } from "ag-grid-vue3";
 
-const useCatalog = useCatalogStore();
+const useCatalog = useCatalogStore(),
+	config = useRuntimeConfig();
 
 await useCatalog.fetchProducts();
 await useCatalog.fetchGroupNames();
@@ -51,9 +52,9 @@ const onCellEditingStopped = async (event) => {
 		updatedData.retail_price = useCatalog.cleanPrice(updatedData.retail_price);
 
 		try {
-			const response = await fetch(`http://127.0.0.1:8000/api/catalog/${updatedData.id}`, {
+			const response = await fetch(`${config.public.API_BASE_URL}/catalog/${updatedData.id}`, {
 				method: "PUT",
-				headers: { "Content-Type": "application/json" },
+				headers: { "Content-Type": "application/json", Authorization: `Bearer ${useCookie("authToken").value}` },
 				body: JSON.stringify(updatedData),
 			});
 

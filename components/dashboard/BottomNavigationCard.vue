@@ -5,10 +5,12 @@ import { LogOut, UserRound } from "lucide-vue-next";
 </script>
 
 <template>
-	<Button variant="outline" size="sm" class="w-full text-left text-primary flex justify-start">
-		<UserRound class="w-4 h-4 mr-4" />
-		<span>Мой аккаунт</span>
-	</Button>
+	<NuxtLink to="/dashboard/account">
+		<Button variant="outline" size="sm" class="w-full text-left text-primary flex justify-start">
+			<UserRound class="w-4 h-4 mr-4" />
+			<span>Мой аккаунт</span>
+		</Button>
+	</NuxtLink>
 	<div class="flex gap-4 md:mt-4">
 		<Button variant="outline" size="sm" class="w-full text-left text-primary flex justify-start">
 			<LogOut class="w-4 h-4 mr-4" />

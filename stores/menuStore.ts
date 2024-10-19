@@ -24,7 +24,7 @@ export const useMenuStore = defineStore('menu', {
         },
         activePageLabel() {
             const activeMenu = this.menuItems.find(item => item.isActive);
-            return activeMenu?.label ?? "Главная";
+            return activeMenu?.label ?? "";
         }
     }
 })

@@ -19,6 +19,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode'
   ],
+  plugins: [
+    '~/plugins/auth.ts',
+  ],
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
     fallback: 'light', // fallback value if not system preference found
@@ -32,7 +35,9 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      appName: 'AirGlass'
+      appName: 'AirGlass',
+      // API_BASE_URL: 'http://192.168.164.70:8000/api',
+      API_BASE_URL: 'http://127.0.0.1:8000/api',
     }
   },
   shadcn: {

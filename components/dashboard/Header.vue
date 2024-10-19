@@ -22,7 +22,7 @@ const deleteRows = () => {
 </script>
 
 <template>
-	<header class="flex h-14 w-screen md:w-auto items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+	<header class="flex h-14 md:w-auto items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6 w-full">
 		<Sheet>
 			<SheetTrigger as-child>
 				<Button variant="outline" size="icon" class="shrink-0 md:hidden">

@@ -1,3 +1,7 @@
+<script setup>
+import { ArrowRight } from "lucide-vue-next";
+</script>
+
 <template>
 	<section>
 		<div class="container">
@@ -7,11 +11,13 @@
 					<h1 class="my-6 text-pretty text-4xl font-bold lg:text-6xl">Welcome to Our Website</h1>
 					<p class="mb-8 max-w-xl text-muted-foreground lg:text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig doloremque mollitia fugiat omnis! Porro facilis quo animi consequatur. Explicabo.</p>
 					<div class="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
-						<Button class="w-full sm:w-auto">
-							<ArrowRight class="mr-2 size-4" />
-							Primary
-						</Button>
-						<Button variant="outline" class="w-full sm:w-auto"> Secondary </Button>
+						<NuxtLink to="/auth">
+							<Button class="w-full sm:w-auto">
+								<ArrowRight class="mr-2 size-4" />
+								Вход
+							</Button>
+						</NuxtLink>
+						<!-- <Button variant="outline" class="w-full sm:w-auto"> Secondary </Button> -->
 					</div>
 				</div>
 				<div class="relative aspect-[3/4]">
@@ -35,8 +41,3 @@
 		</div>
 	</section>
 </template>
-
-<script setup>
-import { ArrowRight } from "lucide-vue-next";
-// import Button from "@/components/ui/button.vue";
-</script>
