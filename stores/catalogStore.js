@@ -12,12 +12,8 @@ export const useCatalogStore = defineStore("catalog", {
     actions: {
         async fetchProducts() {
             try {
-                const response = await fetch(config.public.API_BASE_URL + "/catalog", {
+                const response = await this.apiRequest(`${config.public.API_BASE_URL}/catalog`, {
                     method: "GET",
-                    headers: {
-                        "Authorization": `Bearer ${useCookie("authToken").value}`,
-                        'Content-Type': 'application/json',
-                    }
                 });
                 const products = await response.json();
                 this.rowData = products.map((product) => ({
@@ -32,12 +28,8 @@ export const useCatalogStore = defineStore("catalog", {
         },
         async fetchGroupNames() {
             try {
-                const response = await fetch(config.public.API_BASE_URL + "/catalog-groups", {
+                const response = await this.apiRequest(`${config.public.API_BASE_URL}/catalog-groups`, {
                     method: "GET",
-                    headers: {
-                        "Authorization": `Bearer ${useCookie("authToken").value}`,
-                        'Content-Type': 'application/json',
-                    }
                 });
                 const groups = await response.json();
                 this.groupNames = groups.reduce((acc, group) => {
@@ -68,18 +60,9 @@ export const useCatalogStore = defineStore("catalog", {
 
                     try {
                         for (const row of rowsToDelete) {
-                            const response = await fetch(`${config.public.API_BASE_URL}/catalog/${row.id}`, {
+                            await this.apiRequest(`${config.public.API_BASE_URL}/catalog/${row.id}`, {
                                 method: "DELETE",
-                                headers: {
-                                    "Authorization": `Bearer ${useCookie("authToken").value}`,
-                                    'Content-Type': 'application/json',
-                                }
                             });
-
-                            if (!response.ok)
-                                throw new Error(
-                                    `Failed to delete product with ID: ${row.id}`
-                                );
                         }
 
                         this.rowData = this.rowData.filter(
@@ -101,6 +84,56 @@ export const useCatalogStore = defineStore("catalog", {
                     }
                 }
             });
+        },
+        async updateCatalog(updatedData) {
+            const originalRow = this.rowData.find((product) => product.id === updatedData.id);
+            const hasChanged = Object.keys(updatedData).some(
+                (key) => updatedData[key] !== originalRow[key]
+            );
+
+            if (hasChanged) {
+                updatedData.purchase_price = this.cleanPrice(updatedData.purchase_price);
+                updatedData.retail_price = this.cleanPrice(updatedData.retail_price);
+
+                try {
+                    await this.apiRequest(`${config.public.API_BASE_URL}/catalog/${updatedData.id}`, {
+                        method: "PUT",
+                        body: JSON.stringify(updatedData),
+                    });
+
+                    console.log("Successfully updated product:", updatedData);
+                } catch (error) {
+                    console.error("Error updating product:", error);
+                }
+            } else {
+                console.log("No changes detected, no update needed.");
+            }
+        },
+        async apiRequest(url, options = {}) {
+            const defaultOptions = {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${useCookie("authToken").value}`,
+                    "Content-Type": "application/json",
+                },
+            };
+
+            const mergedOptions = { ...defaultOptions, ...options };
+
+            const response = await fetch(url, mergedOptions);
+
+            if (response.status === 401) {
+                this.handleUnauthorized();
+            } else if (!response.ok) {
+                throw new Error(`Request failed with status ${response.status}`);
+            }
+
+            return response;
+        },
+        handleUnauthorized() {
+            useCookie("authToken").value = null;
+            navigateTo("/auth");
+            Swal.fire("Unauthorized!", "Please log in again.", "error");
         },
     },
     getters: {

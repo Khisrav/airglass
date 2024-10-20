@@ -44,28 +44,7 @@ const onCellEditingStarted = (event) => {
 
 const onCellEditingStopped = async (event) => {
 	const updatedData = event.data;
-	const originalRow = originalData.value[updatedData.id];
-	const hasChanged = Object.keys(updatedData).some((key) => updatedData[key] !== originalRow[key]);
-
-	if (hasChanged) {
-		updatedData.purchase_price = useCatalog.cleanPrice(updatedData.purchase_price);
-		updatedData.retail_price = useCatalog.cleanPrice(updatedData.retail_price);
-
-		try {
-			const response = await fetch(`${config.public.API_BASE_URL}/catalog/${updatedData.id}`, {
-				method: "PUT",
-				headers: { "Content-Type": "application/json", Authorization: `Bearer ${useCookie("authToken").value}` },
-				body: JSON.stringify(updatedData),
-			});
-
-			if (!response.ok) throw new Error("Failed to update product.");
-			console.log("Successfully updated product:", updatedData);
-		} catch (error) {
-			console.error("Error updating product:", error);
-		}
-	} else {
-		console.log("No changes detected, no update needed.");
-	}
+	await useCatalog.updateCatalog(updatedData);
 };
 
 const onSelectionChanged = (event) => {

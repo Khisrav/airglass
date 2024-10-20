@@ -7,7 +7,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         const tokenCookie = useCookie('authToken')
         tokenCookie.value = token;
         
-        window.history.replaceState({}, document.title, '/dashboard');
+        // window.history.replaceState({}, document.title, '/dashboard');
+        navigateTo('/dashboard');
       }
     });
   });

@@ -1,15 +1,15 @@
 const config = useRuntimeConfig();
 
-export const useTemplateGroupStore = defineStore("templateGroup", {
+export const useTemplateStore = defineStore("template", {
     state: () => ({
         selectedRows: [],
         rowData: [],
     }),
     actions: {
-        async fetchTemplateGroups() {
+        async fetchTemplates() {
             if (this.rowData.length > 0) return;
             try {
-                const response = await this.apiRequest(`${config.public.API_BASE_URL}/template-groups`, {
+                const response = await this.apiRequest(`${config.public.API_BASE_URL}/templates`, {
                     method: "GET",
                 });
                 const products = await response.json();
